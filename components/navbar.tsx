@@ -3,17 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Globe, Menu, X } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useLanguage } from "@/lib/language-context"
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { language, setLanguage, t } = useLanguage()
-
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "ar" : "en")
-  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
@@ -25,35 +19,30 @@ export function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
-            <Link href="#overview" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("overview")}
+            <Link href="/" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Overview
             </Link>
-            <Link href="#outbound" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("outbound")}
+            <Link href="/outbound" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Outbound
             </Link>
-            <Link href="#inbound" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("inbound")}
+            <Link href="/inbound" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Inbound
             </Link>
-            <Link href="#industry" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("industry")}
+            <Link href="/industry" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Industry
             </Link>
-            <Link href="#integrations" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("integrations")}
+            <Link href="/integrations" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Integrations
             </Link>
-            <Link href="#contact" className="text-sm text-gray-300 hover:text-white transition-colors">
-              {t("contact")}
+            <Link href="/contact" className="text-sm text-gray-300 hover:text-white transition-colors">
+              Contact
             </Link>
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
-            >
-              <Globe className="w-4 h-4" />
-              {language === "en" ? t("arabic") : t("english")}
-            </button>
           </div>
 
           <div className="hidden md:block">
-            <Button className="bg-purple-600 hover:bg-purple-700 text-white">{t("bookDemo")}</Button>
+            <Link href="/demo">
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white">Book Demo</Button>
+            </Link>
           </div>
 
           <button className="md:hidden text-white" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -64,32 +53,27 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-white/10">
             <div className="flex flex-col gap-4">
-              <Link href="#overview" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("overview")}
+              <Link href="/" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Overview
               </Link>
-              <Link href="#outbound" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("outbound")}
+              <Link href="/outbound" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Outbound
               </Link>
-              <Link href="#inbound" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("inbound")}
+              <Link href="/inbound" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Inbound
               </Link>
-              <Link href="#industry" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("industry")}
+              <Link href="/industry" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Industry
               </Link>
-              <Link href="#integrations" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("integrations")}
+              <Link href="/integrations" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Integrations
               </Link>
-              <Link href="#contact" className="text-sm text-gray-300 hover:text-white transition-colors">
-                {t("contact")}
+              <Link href="/contact" className="text-sm text-gray-300 hover:text-white transition-colors">
+                Contact
               </Link>
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
-              >
-                <Globe className="w-4 h-4" />
-                {language === "en" ? t("arabic") : t("english")}
-              </button>
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full">{t("bookDemo")}</Button>
+              <Link href="/demo" className="w-full">
+                <Button className="bg-purple-600 hover:bg-purple-700 text-white w-full">Book Demo</Button>
+              </Link>
             </div>
           </div>
         )}

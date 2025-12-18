@@ -1,0 +1,180 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { Zap, ArrowRight, Puzzle, Link2, Globe } from "lucide-react"
+
+export function IntegrationsHero() {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20">
+      {/* Animated Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-950/20 to-black" />
+        
+        {/* Animated Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-full blur-3xl"
+        />
+        
+        <motion.div
+          animate={{
+            x: [0, -80, 0],
+            y: [0, 60, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-600/20 to-purple-600/20 rounded-full blur-3xl"
+        />
+
+        {/* Floating Elements */}
+        <motion.div
+          animate={{
+            y: [-20, 20, -20],
+            rotate: [0, 5, 0]
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 right-20 w-4 h-4 bg-purple-500 rounded-full opacity-60"
+        />
+        
+        <motion.div
+          animate={{
+            y: [20, -20, 20],
+            rotate: [0, -5, 0]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1
+          }}
+          className="absolute bottom-32 left-20 w-6 h-6 bg-cyan-500 rounded-full opacity-40"
+        />
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10 py-12">
+        <div className="text-center space-y-8">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600/20 border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium backdrop-blur-sm"
+          >
+            <Link2 className="w-4 h-4" />
+            Voice AI Integrations for the Enterprise Stack
+          </motion.div>
+
+          {/* Main Heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+          >
+            <span className="text-white">Built for</span>
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-600 bg-clip-text text-transparent">
+              Interoperability
+            </span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-gray-300 text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
+          >
+            Nevox connects your telephony, contact center, and data systems — unifying AI automation across 200+ enterprise apps.
+          </motion.p>
+
+          {/* Integration Categories */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-4 pt-4"
+          >
+            {["CRM", "Phone", "Calendar", "Analytics"].map((category, index) => (
+              <motion.div
+                key={category}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.8 + (index * 0.1) }}
+                className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white/80 text-sm font-medium backdrop-blur-sm"
+              >
+                {category}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8"
+          >
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/40 group"
+            >
+              <Puzzle className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
+              Explore Integrations
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white hover:bg-white/10 font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300 hover:scale-105 group"
+            >
+              <Globe className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              Request Integration
+            </Button>
+          </motion.div>
+
+          {/* Quick Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 max-w-3xl mx-auto"
+          >
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">200+</div>
+              <div className="text-gray-400">Enterprise Apps</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">5min</div>
+              <div className="text-gray-400">Setup Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">99.9%</div>
+              <div className="text-gray-400">Uptime SLA</div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}

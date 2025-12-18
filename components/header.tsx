@@ -26,7 +26,9 @@ export function Header() {
             <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-purple-900 rounded-lg" />
             <span className="text-xl font-bold text-white">Nevox AI</span>
           </div>
-          <Button className="bg-purple-600 hover:bg-purple-700 text-white">Book Demo</Button>
+          <a href="/demo">
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white">Book Demo</Button>
+          </a>
         </div>
       </div>
     </header>

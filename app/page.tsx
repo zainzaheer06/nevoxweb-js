@@ -16,7 +16,9 @@ export default function Page() {
     <div className="min-h-screen bg-black">
       <Navbar />
       <Hero />
-      <Features />
+      <div id="overview">
+        <Features />
+      </div>
       <AgentCards />
       <UseCases />
       <HowItWorks />
